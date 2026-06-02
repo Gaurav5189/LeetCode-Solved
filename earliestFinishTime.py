@@ -9,22 +9,23 @@ class Solution(object):
         :type waterDuration: List[int]
         :rtype: int
         """
-        min_finish_time = float('inf')
-        
+        ridetimes=[]
+
         for i in range(len(landStartTime)):
             for j in range(len(waterStartTime)):
-                
-                finish_land_first = landStartTime[i] + landDuration[i]
-                start_water_second = max(finish_land_first, waterStartTime[j])
-                final_water_finish = start_water_second + waterDuration[j]
-                
-                finish_water_first = waterStartTime[j] + waterDuration[j]
-                start_land_second = max(finish_water_first, landStartTime[i])
-                final_land_finish = start_land_second + landDuration[i]
-                
-                min_finish_time = min(min_finish_time, final_water_finish, final_land_finish)
-                
-        return min_finish_time
+
+                landFinish1 = landStartTime[i] + landDuration[i]
+                waterStart = max(landFinish1, waterStartTime[j])
+                waterFinish2 = waterStart + waterDuration[j]
+                ridetimes.append(waterFinish2)
+
+                waterFinish1 = waterStartTime[j] + waterDuration[j]
+                landStart = max(waterFinish1, landStartTime[i])
+                landFinish2 = landStart + landDuration[i]
+                ridetimes.append(landFinish2)
+
+
+        return min(ridetimes)
 
 
 
