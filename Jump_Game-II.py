@@ -1,5 +1,5 @@
 # 45. Jump Game II (medium)
-# Used recursion. Tc- O(n), Sc- O(n^2) or O(n) auxiliary space
+# Used recursion. Tc- O(n^2), Sc- O(n^2) or O(n) auxiliary space
 class Solution(object):
     def jump(self, nums):
         """
